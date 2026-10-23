@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import './App.css';
 
-const API = 'http://localhost:3000';
+const API = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 const DEFAULT_CRITERIA =
   'Payments or fintech companies that work with startups and developers.';
 
