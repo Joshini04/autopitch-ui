@@ -1,16 +1,34 @@
-# React + Vite
+# AutoPitch AI: Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React interface for AutoPitch AI, an AI-assisted outreach platform. It lets you review the leads the pipeline found, read the AI's company research and fit score, edit the drafted email, and approve it before anything is sent.
 
-Currently, two official plugins are available:
+Backend (Node.js + Express API, RAG pipeline): https://github.com/Joshini04/autopitch-Updated
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Screens
 
-## React Compiler
+- **Leads:** filterable table of contacts with score and status. Selecting a lead shows the AI research summary, the reasons behind its score, and an editable email with Approve and Reject buttons.
+- **Run:** enter a seed domain and a description of your ideal lead to find new contacts.
+- **Knowledge:** add notes about yourself or your offer. The AI retrieves the best-matching notes by meaning when it writes each email.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech stack
 
-## Expanding the ESLint configuration
+React, Vite, plain CSS. The app talks to the backend over a REST API.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Running locally
+
+    git clone https://github.com/Joshini04/autopitch-ui.git
+    cd autopitch-ui
+    npm install
+    npm run dev
+
+By default the app calls the backend at http://localhost:3000. To use another backend, create a .env file with:
+
+    VITE_API_URL=https://your-backend-address
+
+Start the backend from the autopitch-Updated repo first.
+
+## Notes
+
+- Sending is controlled on the backend by a dry-run setting, so approving a draft does not send an email unless that is switched on.
+- The backend runs on a free hosting plan that sleeps when idle, so the first request after a pause can take about a minute.
+
